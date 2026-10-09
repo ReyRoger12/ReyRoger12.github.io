@@ -49,6 +49,22 @@
         </div>
 
         <div class="space-y-12">
+            <!-- Sección de Video Adjunto -->
+            <div class="bg-zombieCard border border-zinc-800 p-8 sm:p-10 rounded-2xl">
+                <div class="text-center max-w-2xl mx-auto mb-6">
+                    <span class="text-red-500 font-mono text-xs uppercase font-bold tracking-wider">Archivo Audiovisual</span>
+                    <h3 class="text-2xl font-bold text-white mt-1">Cronología de la Infección (9 - 18 de Julio, 1993)</h3>
+                </div>
+                <div class="relative w-full aspect-video rounded-xl overflow-hidden border border-zinc-700 shadow-2xl bg-black">
+                    <!-- Nota: Asegúrate de cambiar 'tu-video.mp4' por la ruta real de tu archivo de video adjunto -->
+                    <video controls class="w-full h-full object-contain">
+                        <source src="tu-video.mp4" type="video/mp4">
+                        Tu navegador không soporta la reproducción de video.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Contenido previo: Virus Aerotransportado -->
             <div class="bg-zombieCard border border-zinc-800 p-8 sm:p-10 rounded-2xl">
                 <div class="flex flex-col md:flex-row gap-8 items-center">
                     <div class="w-full md:w-1/2">
@@ -67,6 +83,7 @@
                 </div>
             </div>
 
+            <!-- Contenido previo: Cuarentena -->
             <div class="bg-zombieCard border border-zinc-800 p-8 sm:p-10 rounded-2xl">
                 <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
                     <div class="w-full md:w-1/2">
@@ -81,6 +98,80 @@
                     </div>
                     <div class="w-full md:w-1/2">
                         <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Cuarentena" class="rounded-xl border border-zinc-700 w-full h-64 object-cover opacity-90 shadow-lg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- NUEVA SECCIÓN: Transcripciones de Estaciones de Radio -->
+            <div class="bg-zombieCard border border-zinc-800 p-8 sm:p-10 rounded-2xl">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-emerald-500 font-mono text-xs uppercase font-bold tracking-wider">Archivos de Radio</span>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1 font-horror">Transcripciones y Frecuencias</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Registros de transmisiones de radio recuperados durante el Evento Knox.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Frecuencia M1A1 -->
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-6 rounded-xl">
+                        <h4 class="text-lg font-bold text-emerald-400 mb-2"><i class="fa-solid fa-tower-broadcast mr-2"></i>Frecuencia M1A1</h4>
+                        <p class="text-xs text-zinc-400 mb-3 font-mono">Mensaje repetitivo de estación de números / Coordenadas de Fort Knox[cite: 2].</p>
+                        <div class="bg-zinc-950 p-4 rounded-lg text-xs text-zinc-300 font-mono max-h-40 overflow-y-auto space-y-1 border border-zinc-800">
+                            <p class="text-red-400">Voz automatizada:</p>
+                            <p>Tres. Siete. Ocho. Nueve. Dos. Cero. Nueve. Ocho. Cinco. Nueve. Siete. Cuatro. Siete. Cero. Nueve[cite: 2].</p>
+                            <p class="mt-2 text-zinc-500 italic">Curiosidad: Las coordenadas se leen como Lat 37.892809, Long -85.974709 (Fort Knox, KY)[cite: 2].</p>
+                        </div>
+                    </div>
+
+                    <!-- Frecuencia sin dato (Desconocida) -->
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-6 rounded-xl">
+                        <h4 class="text-lg font-bold text-emerald-400 mb-2"><i class="fa-solid fa-tower-broadcast mr-2"></i>Frecuencia Desconocida / Sin Dato</h4>
+                        <p class="text-xs text-zinc-400 mb-3 font-mono">12 de julio de 1993, 06:00 - 12:00[cite: 3].</p>
+                        <div class="bg-zinc-950 p-4 rounded-lg text-xs text-zinc-300 font-mono max-h-40 overflow-y-auto space-y-1 border border-zinc-800">
+                            <p class="text-zinc-400">Ponente:</p>
+                            <p>¿Hola? ¿HOLA? Estoy en la zona de exclusión. Te están mintiendo. El Ejército sabe exactamente lo que es esto. Es una enfermedad que... ¡Las personas ya no son personas![cite: 3]</p>
+                            <p>Al principio provenía de una fiebre... ¿Te meten el diente? Tú eres uno de ellos. Tienen francotiradores. No hacen preguntas[cite: 3].</p>
+                        </div>
+                    </div>
+
+                    <!-- Knox Hitz Radio -->
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-6 rounded-xl">
+                        <h4 class="text-lg font-bold text-emerald-400 mb-2"><i class="fa-solid fa-music mr-2"></i>Knox Hitz Radio</h4>
+                        <p class="text-xs text-zinc-400 mb-3 font-mono">Música, entretenimiento y reportes locales de Janina, Frankie y Billy[cite: 4, 6, 8].</p>
+                        <div class="bg-zinc-950 p-4 rounded-lg text-xs text-zinc-300 font-mono max-h-40 overflow-y-auto space-y-1 border border-zinc-800">
+                            <p class="text-red-400">Productor / Anfitrión:</p>
+                            <p>¡Knox Hitz! ¡Tu estilo, tu música! Intentaremos mantenerlo normal, tal vez estés en casa con puertas y ventanas cerradas, o con el Ejército[cite: 4, 6].</p>
+                            <p class="text-zinc-500 italic mt-1">Incluye múltiples bloques musicales y avisos del ejército sobre el bloqueo de carreteras[cite: 4, 11].</p>
+                        </div>
+                    </div>
+
+                    <!-- KnoxTalk Radio -->
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-6 rounded-xl">
+                        <h4 class="text-lg font-bold text-emerald-400 mb-2"><i class="fa-solid fa-comments mr-2"></i>KnoxTalk Radio</h4>
+                        <p class="text-xs text-zinc-400 mb-3 font-mono">Llamadas abiertas al público, teorías conspirativas y testimonios[cite: 31, 32].</p>
+                        <div class="bg-zinc-950 p-4 rounded-lg text-xs text-zinc-300 font-mono max-h-40 overflow-y-auto space-y-1 border border-zinc-800">
+                            <p class="text-red-400">Anfitrión y Llamadas:</p>
+                            <p>Espacio de debate ciudadano sobre los cortes de Knox Telecommunications, rumores de laboratorios militares, tropas en las calles y la evolución del caos en el condado[cite: 33, 36, 46].</p>
+                        </div>
+                    </div>
+
+                    <!-- NNR Radio -->
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-6 rounded-xl">
+                        <h4 class="text-lg font-bold text-emerald-400 mb-2"><i class="fa-solid fa-globe mr-2"></i>NNR Network (Noticias Nacionales)</h4>
+                        <p class="text-xs text-zinc-400 mb-3 font-mono">Cobertura oficial, discursos del Presidente y del General John McGrew[cite: 62, 64].</p>
+                        <div class="bg-zinc-950 p-4 rounded-lg text-xs text-zinc-300 font-mono max-h-40 overflow-y-auto space-y-1 border border-zinc-800">
+                            <p class="text-red-400">Anfitrión NNR:</p>
+                            <p>Comunicados oficiales insistiendo en que "el Evento Knox está contenido"[cite: 64, 72], seguidos por la expansión global de la infección hacia el 18 de julio de 1993[cite: 90]. Incluye las últimas palabras del Pastor James Hartnell[cite: 92].</p>
+                        </div>
+                    </div>
+
+                    <!-- Noticiero LBMW y Jonas -->
+                    <div class="bg-zinc-900/80 border border-zinc-800 p-6 rounded-xl">
+                        <h4 class="text-lg font-bold text-emerald-400 mb-2"><i class="fa-solid fa-microphone-lines mr-2"></i>Noticiero LBMW y Jonas</h4>
+                        <p class="text-xs text-zinc-400 mb-3 font-mono">Reportes de Jackie Jaye, Frank Hemingway y las transmisiones finales de Jonas Underwood[cite: 93, 117].</p>
+                        <div class="bg-zinc-950 p-4 rounded-lg text-xs text-zinc-300 font-mono max-h-40 overflow-y-auto space-y-1 border border-zinc-800">
+                            <p class="text-red-400">Jackie Jaye / Jonas:</p>
+                            <p>Cobertura desde los campamentos de refugiados, la caída del perímetro, la propagación de la cepa aérea y las transmisiones de emergencia finales anunciando el colapso total[cite: 93, 115, 120].</p>
+                        </div>
                     </div>
                 </div>
             </div>
