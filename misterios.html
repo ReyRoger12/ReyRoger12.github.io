@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Zomboid - Misterios y Secretos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { zombieDark: '#0b0f0d', zombieCard: '#141b16' } } }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        .font-horror { font-family: 'Special Elite', cursive; }
+        body { background-color: #0b0f0d; color: #d1d5db; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f0d]/95 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="bg-red-950 p-2 rounded-lg border border-red-900/50">
+                    <i class="fa-solid fa-biohazard text-red-600 text-xl"></i>
+                </div>
+                <span class="font-horror text-xl sm:text-2xl tracking-wider text-zinc-100">KNOX <span class="text-red-600">ARCHIVES</span></span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Inicio</a>
+                <a href="lore.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Lore</a>
+                <a href="misterios.html" class="text-emerald-500 font-semibold">Misterios</a>
+                <a href="curiosidades.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Curiosidades</a>
+                <a href="galeria.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Galería</a>
+            </nav>
+            <div class="hidden md:block">
+                <a href="index.html" class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all">Volver</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-red-600 font-mono text-sm tracking-widest uppercase">Expediente 02: Secretos del Condado</span>
+            <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 font-horror">Misterios y Leyendas Urbanas</h2>
+            <div class="w-24 h-1 bg-emerald-700 mx-auto mt-4 rounded-full"></div>
+            <p class="text-zinc-400 mt-4">Los secretos más oscuros que esconde el mapa y que pocos jugadores han logrado desentrañar.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-zombieCard border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-red-900/30 text-red-400 border border-red-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 01</span>
+                        <h3 class="text-xl font-bold text-white">La Base Secreta / Spiffo Labs</h3>
+                    </div>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Escondida en los densos bosques del norte, existen instalaciones subterráneas vinculadas a experimentos clandestinos corporativos. Teóricos de la comunidad afirman que el virus pudo originarse o analizarse primeramente aquí.
+                    </p>
+                </div>
+                <div class="flex items-center text-emerald-500 text-sm font-semibold space-x-2">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Ubicación: Bosques profundos del norte</span>
+                </div>
+            </div>
+
+            <div class="bg-zombieCard border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-amber-900/30 text-amber-400 border border-amber-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 02</span>
+                        <h3 class="text-xl font-bold text-white">Transmisiones AEBS (95.0 MHz)</h3>
+                    </div>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        El Sistema de Emisión de Emergencia automatizado transmite códigos cifrados y reportes meteorológicos extraños antes de que la energía colapse por completo en todo el estado, ofreciendo pistas clave.
+                    </p>
+                </div>
+                <div class="flex items-center text-amber-500 text-sm font-semibold space-x-2">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <span>Frecuencia clave de radio analógica</span>
+                </div>
+            </div>
+
+            <div class="bg-zombieCard border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-blue-900/30 text-blue-400 border border-blue-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 03</span>
+                        <h3 class="text-xl font-bold text-white">Búnkeres Antinucleares Escondidos</h3>
+                    </div>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Refugios subterráneos fortificados que solo pueden abrirse utilizando un soplete de propano y herramientas de metalurgia avanzada, conteniendo valiosas provisiones militares de emergencia.
+                    </p>
+                </div>
+                <div class="flex items-center text-blue-400 text-sm font-semibold space-x-2">
+                    <i class="fa-solid fa-hammer"></i>
+                    <span>Requiere herramientas de soldadura</span>
+                </div>
+            </div>
+
+            <div class="bg-zombieCard border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-purple-900/30 text-purple-400 border border-purple-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 04</span>
+                        <h3 class="text-xl font-bold text-white">El Mito de Kate y Baldspot</h3>
+                    </div>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        En las versiones Alfa históricas de 2011, la demo presentaba la trágica historia de Kate herida en cama. Aunque la estructura cambió, su legado sigue vivo en los archivos e historias de la comunidad.
+                    </p>
+                </div>
+                <div class="flex items-center text-purple-400 text-sm font-semibold space-x-2">
+                    <i class="fa-solid fa-history"></i>
+                    <span>Los orígenes del desarrollo indie</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#080b09] border-t border-zinc-800 py-12 px-4 sm:px-6 lg:px-8 text-zinc-500 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-biohazard text-red-600 text-xl"></i>
+                <span class="font-horror text-zinc-300">PROJECT ZOMBOID ESPAÑOL</span>
+            </div>
+            <p class="text-center md:text-left text-xs sm:text-sm">Project Zomboid es desarrollado por The Indie Stone.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

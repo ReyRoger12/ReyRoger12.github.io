@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Zomboid - Curiosidades y Desarrollo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { zombieDark: '#0b0f0d', zombieCard: '#141b16' } } }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        .font-horror { font-family: 'Special Elite', cursive; }
+        body { background-color: #0b0f0d; color: #d1d5db; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f0d]/95 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="bg-red-950 p-2 rounded-lg border border-red-900/50">
+                    <i class="fa-solid fa-biohazard text-red-600 text-xl"></i>
+                </div>
+                <span class="font-horror text-xl sm:text-2xl tracking-wider text-zinc-100">KNOX <span class="text-red-600">ARCHIVES</span></span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Inicio</a>
+                <a href="lore.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Lore</a>
+                <a href="misterios.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Misterios</a>
+                <a href="curiosidades.html" class="text-emerald-500 font-semibold">Curiosidades</a>
+                <a href="galeria.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Galería</a>
+            </nav>
+            <div class="hidden md:block">
+                <a href="index.html" class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all">Volver</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-emerald-500 font-mono text-sm tracking-widest uppercase">Expediente 03: Datos y Mecánicas</span>
+            <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 font-horror">Curiosidades del Simulador</h2>
+            <div class="w-24 h-1 bg-red-800 mx-auto mt-4 rounded-full"></div>
+            <p class="text-zinc-400 mt-4">Detalles técnicos avanzados y referencias culturales ocultas en Project Zomboid.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-zombieCard border border-zinc-800 p-8 rounded-2xl">
+                <div class="text-emerald-500 text-3xl mb-4"><i class="fa-solid fa-lungs"></i></div>
+                <h3 class="text-xl font-bold text-white mb-3">Metabolismo y Peso</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    El cuerpo de tu personaje reacciona al consumo de calorías. Comer demasiada comida rápida provoca obesidad y fatiga rápida, mientras que la falta de nutrientes reduce drásticamente la fuerza en combate.
+                </p>
+            </div>
+
+            <div class="bg-zombieCard border border-zinc-800 p-8 rounded-2xl">
+                <div class="text-amber-500 text-3xl mb-4"><i class="fa-solid fa-brain"></i></div>
+                <h3 class="text-xl font-bold text-white mb-3">Salud Mental y Pánico</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    Los supervivientes desarrollan fobias (claustrofobia, agorafobia) y sufren episodios de pánico extremo o depresión profunda si se quedan solos o atrapados en la oscuridad durante demasiado tiempo.
+                </p>
+            </div>
+
+            <div class="bg-zombieCard border border-zinc-800 p-8 rounded-2xl">
+                <div class="text-red-500 text-3xl mb-4"><i class="fa-solid fa-tv"></i></div>
+                <h3 class="text-xl font-bold text-white mb-3">Tecnología de 1993</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    El juego recrea con precisión la era pre-internet: cintas VHS educativas para aprender carpintería y agricultura sin libros, televisores de tubo y reproductores de casetes analógicos.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#080b09] border-t border-zinc-800 py-12 px-4 sm:px-6 lg:px-8 text-zinc-500 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-biohazard text-red-600 text-xl"></i>
+                <span class="font-horror text-zinc-300">PROJECT ZOMBOID ESPAÑOL</span>
+            </div>
+            <p class="text-center md:text-left text-xs sm:text-sm">Project Zomboid es desarrollado por The Indie Stone.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
