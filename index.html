@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Zomboid - El Lore, Misterios y Secretos</title>
+    <title>Project Zomboid - Archivos del Condado de Knox</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -37,7 +37,7 @@
             color: #d1d5db;
         }
         .hero-bg {
-            background: linear-gradient(to bottom, rgba(11, 15, 13, 0.7), rgba(11, 15, 13, 0.95)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(to bottom, rgba(11, 15, 13, 0.75), rgba(11, 15, 13, 0.95)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
@@ -49,266 +49,352 @@
             border-color: #4c6444;
             box-shadow: 0 10px 25px -5px rgba(76, 100, 68, 0.2);
         }
+        .page-view {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .page-view.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-red-900 selection:text-white">
+<body class="antialiased selection:bg-red-900 selection:text-white min-h-screen flex flex-col justify-between">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f0d]/90 backdrop-blur-md border-b border-zinc-800">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f0d]/95 backdrop-blur-md border-b border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
                 <div class="bg-red-950 p-2 rounded-lg border border-red-900/50">
                     <i class="fa-solid fa-biohazard text-red-600 text-xl animate-pulse"></i>
                 </div>
                 <span class="font-horror text-xl sm:text-2xl tracking-wider text-zinc-100">KNOX <span class="text-red-600">ARCHIVES</span></span>
             </div>
+            
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#lore" class="text-zinc-300 hover:text-emerald-500 transition-colors">Lore</a>
-                <a href="#misterios" class="text-zinc-300 hover:text-emerald-500 transition-colors">Misterios</a>
-                <a href="#curiosidades" class="text-zinc-300 hover:text-emerald-500 transition-colors">Curiosidades</a>
-                <a href="#galeria" class="text-zinc-300 hover:text-emerald-500 transition-colors">Galería</a>
+                <button onclick="switchPage('home')" id="nav-home" class="nav-btn text-emerald-500 font-semibold transition-colors">Inicio</button>
+                <button onclick="switchPage('lore')" id="nav-lore" class="nav-btn text-zinc-300 hover:text-emerald-500 transition-colors">Lore</button>
+                <button onclick="switchPage('misterios')" id="nav-misterios" class="nav-btn text-zinc-300 hover:text-emerald-500 transition-colors">Misterios</button>
+                <button onclick="switchPage('curiosidades')" id="nav-curiosidades" class="nav-btn text-zinc-300 hover:text-emerald-500 transition-colors">Curiosidades</button>
+                <button onclick="switchPage('galeria')" id="nav-galeria" class="nav-btn text-zinc-300 hover:text-emerald-500 transition-colors">Galería</button>
             </nav>
-            <div>
-                <a href="#lore" class="bg-red-900 hover:bg-red-800 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-red-950/50 flex items-center space-x-2">
+
+            <div class="hidden md:block">
+                <button onclick="switchPage('lore')" class="bg-red-900 hover:bg-red-800 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-red-950/50 flex items-center space-x-2">
                     <i class="fa-solid fa-skull"></i>
                     <span>Sobrevivir</span>
-                </a>
+                </button>
             </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-zinc-300 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0b0f0d] border-b border-zinc-800 px-6 py-4 space-y-3">
+            <button onclick="switchPage('home'); toggleMobileMenu();" class="block w-full text-left text-zinc-300 hover:text-emerald-500 py-2 font-medium">Inicio</button>
+            <button onclick="switchPage('lore'); toggleMobileMenu();" class="block w-full text-left text-zinc-300 hover:text-emerald-500 py-2 font-medium">Lore</button>
+            <button onclick="switchPage('misterios'); toggleMobileMenu();" class="block w-full text-left text-zinc-300 hover:text-emerald-500 py-2 font-medium">Misterios</button>
+            <button onclick="switchPage('curiosidades'); toggleMobileMenu();" class="block w-full text-left text-zinc-300 hover:text-emerald-500 py-2 font-medium">Curiosidades</button>
+            <button onclick="switchPage('galeria'); toggleMobileMenu();" class="block w-full text-left text-zinc-300 hover:text-emerald-500 py-2 font-medium">Galería</button>
         </div>
     </header>
 
-    <section class="relative min-h-screen flex items-center justify-center hero-bg pt-20 px-4">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f0d] via-transparent to-transparent"></div>
-        <div class="relative max-w-4xl mx-auto text-center z-10 py-20">
-            <div class="inline-flex items-center space-x-2 bg-red-950/80 border border-red-800 px-4 py-1.5 rounded-full text-red-400 text-xs sm:text-sm font-semibold mb-6 uppercase tracking-widest">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <span>ZONA DE EXCLUSIÓN DE KENTUCKY - 1993</span>
-            </div>
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase font-horror">
-                PROJECT ZOMBOID: <br/><span class="text-red-600 blood-glow">El Fin del Condado de Knox</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                "Esta es la historia de cómo moriste." No hay cura. No hay salvación heroica. Solo es cuestión de cuánto tiempo puedes retrasar lo inevitable en un mundo implacable.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#lore" class="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-xl flex items-center justify-center space-x-3 border border-emerald-500/30">
-                    <i class="fa-solid fa-book-open"></i>
-                    <span>Explorar el Archivo</span>
-                </a>
-                <a href="#misterios" class="w-full sm:w-auto bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 px-8 py-4 rounded-xl font-bold transition-all border border-zinc-700 flex items-center justify-center space-x-3">
-                    <i class="fa-solid fa-key"></i>
-                    <span>Ver Secretos</span>
-                </a>
-            </div>
-        </div>
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-            <a href="#lore" class="text-zinc-500 hover:text-zinc-300">
-                <i class="fa-solid fa-chevron-down text-2xl"></i>
-            </a>
-        </div>
-    </section>
+    <main class="flex-grow pt-20">
 
-    <section id="lore" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-emerald-500 font-mono text-sm tracking-widest uppercase">Expediente 01</span>
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 font-horror">El Brote de 1993 y el Inevitable Fin</h2>
-            <div class="w-24 h-1 bg-red-800 mx-auto mt-4 rounded-full"></div>
-            <p class="text-zinc-400 mt-4">El misterio detrás del colapso de Kentucky y el virus aerotransportado que diezmó la civilización.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-[#141b16] border border-zinc-800 p-8 rounded-2xl card-hover transition-all duration-300">
-                <div class="bg-emerald-950/50 w-14 h-14 rounded-xl flex items-center justify-center border border-emerald-900/50 mb-6 text-emerald-400 text-2xl">
-                    <i class="fa-solid fa-virus"></i>
+        <!-- ==================== VIEW: HOME (index.html equivalent) ==================== -->
+        <div id="view-home" class="page-view active">
+            <section class="relative min-h-[90vh] flex items-center justify-center hero-bg px-4">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f0d] via-transparent to-transparent"></div>
+                <div class="relative max-w-4xl mx-auto text-center z-10 py-20">
+                    <div class="inline-flex items-center space-x-2 bg-red-950/80 border border-red-800 px-4 py-1.5 rounded-full text-red-400 text-xs sm:text-sm font-semibold mb-6 uppercase tracking-widest">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>ZONA DE EXCLUSIÓN DE KENTUCKY - 1993</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase font-horror">
+                        PROJECT ZOMBOID: <br/><span class="text-red-600 blood-glow">El Fin del Condado de Knox</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                        "Esta es la historia de cómo moriste." No hay cura. No hay salvación heroica. Solo es cuestión de cuánto tiempo puedes retrasar lo inevitable en un mundo implacable.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="switchPage('lore')" class="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-xl flex items-center justify-center space-x-3 border border-emerald-500/30">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>Explorar el Lore</span>
+                        </button>
+                        <button onclick="switchPage('misterios')" class="w-full sm:w-auto bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 px-8 py-4 rounded-xl font-bold transition-all border border-zinc-700 flex items-center justify-center space-x-3">
+                            <i class="fa-solid fa-key"></i>
+                            <span>Ver Misterios</span>
+                        </button>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">El Virus Aerotransportado</h3>
-                <p class="text-zinc-400 leading-relaxed text-sm">
-                    A diferencia de la ficción zombi tradicional donde solo las mordeduras infectan, el virus de Knox tiene una cepa aerotransportada que afectó silenciosamente a toda la población mundial inmune al contagio directo pero vulnerable al patógeno mutado.
-                </p>
-            </div>
+            </section>
 
-            <div class="bg-[#141b16] border border-zinc-800 p-8 rounded-2xl card-hover transition-all duration-300">
-                <div class="bg-amber-950/50 w-14 h-14 rounded-xl flex items-center justify-center border border-amber-900/50 mb-6 text-amber-500 text-2xl">
-                    <i class="fa-solid fa-shield-halved"></i>
+            <!-- Quick Navigation Cards -->
+            <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-500 font-mono text-sm tracking-widest uppercase">Índice de Expedientes</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 font-horror">Archivos Disponibles</h2>
+                    <div class="w-24 h-1 bg-red-800 mx-auto mt-4 rounded-full"></div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">La Cuarentena Militar</h3>
-                <p class="text-zinc-400 leading-relaxed text-sm">
-                    El ejército de los EE. UU. erigió un muro impenetrable alrededor del condado de Knox. Ciudades enteras como West Point, Muldraugh, March Ridge y Louisville quedaron aisladas del resto del mundo bajo la ley marcial.
-                </p>
-            </div>
 
-            <div class="bg-[#141b16] border border-zinc-800 p-8 rounded-2xl card-hover transition-all duration-300">
-                <div class="bg-red-950/50 w-14 h-14 rounded-xl flex items-center justify-center border border-red-900/50 mb-6 text-red-500 text-2xl">
-                    <i class="fa-solid fa-skull-crossbones"></i>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div onclick="switchPage('lore')" class="bg-[#141b16] border border-zinc-800 p-6 rounded-2xl card-hover transition-all duration-300 cursor-pointer group">
+                        <div class="bg-emerald-950/50 w-12 h-12 rounded-xl flex items-center justify-center border border-emerald-900/50 mb-4 text-emerald-400 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-biohazard"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Lore y Brote</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Conoce el origen del virus de Knox y la cuarentena militar de 1993.</p>
+                        <span class="text-emerald-500 text-xs font-semibold flex items-center space-x-1"><span>Leer expediente</span> <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('misterios')" class="bg-[#141b16] border border-zinc-800 p-6 rounded-2xl card-hover transition-all duration-300 cursor-pointer group">
+                        <div class="bg-red-950/50 w-12 h-12 rounded-xl flex items-center justify-center border border-red-900/50 mb-4 text-red-500 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-mask"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Misterios</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Instalaciones clandestinas, bases secretas y transmisiones crípticas.</p>
+                        <span class="text-red-500 text-xs font-semibold flex items-center space-x-1"><span>Investigar secretos</span> <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('curiosidades')" class="bg-[#141b16] border border-zinc-800 p-6 rounded-2xl card-hover transition-all duration-300 cursor-pointer group">
+                        <div class="bg-amber-950/50 w-12 h-12 rounded-xl flex items-center justify-center border border-amber-900/50 mb-4 text-amber-500 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Curiosidades</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Mecánicas de supervivencia profundas y referencias de la cultura pop.</p>
+                        <span class="text-amber-500 text-xs font-semibold flex items-center space-x-1"><span>Descubrir datos</span> <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('galeria')" class="bg-[#141b16] border border-zinc-800 p-6 rounded-2xl card-hover transition-all duration-300 cursor-pointer group">
+                        <div class="bg-blue-950/50 w-12 h-12 rounded-xl flex items-center justify-center border border-blue-900/50 mb-4 text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-images"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Galería</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Capturas atmosféricas del condado de Kentucky en ruinas.</p>
+                        <span class="text-blue-400 text-xs font-semibold flex items-center space-x-1"><span>Ver imágenes</span> <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">Destino Ineludible</h3>
-                <p class="text-zinc-400 leading-relaxed text-sm">
-                    Los jugadores encarnan a los pocos desafortunados atrapados dentro de la zona de exclusión. No hay rescate en camino; el gobierno abandonó a su suerte a los civiles mientras el caos interno consumía la región.
-                </p>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <section id="misterios" class="py-24 bg-[#0d1210] border-y border-zinc-800/60 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
+        <!-- ==================== VIEW: LORE (lore.html equivalent) ==================== -->
+        <div id="view-lore" class="page-view py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-red-600 font-mono text-sm tracking-widest uppercase">Expediente Clasificado</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 font-horror">Misterios y Secretos del Condado</h2>
+                <span class="text-emerald-500 font-mono text-sm tracking-widest uppercase">Expediente 01: Historia y Origen</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 font-horror">El Brote del Condado de Knox</h2>
+                <div class="w-24 h-1 bg-red-800 mx-auto mt-4 rounded-full"></div>
+                <p class="text-zinc-400 mt-4">Una inmersión profunda en el colapso de la civilización en el verano de 1993.</p>
+            </div>
+
+            <div class="space-y-12">
+                <div class="bg-[#141b16] border border-zinc-800 p-8 sm:p-10 rounded-2xl">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-full md:w-1/2">
+                            <span class="text-red-500 font-mono text-xs uppercase font-bold tracking-wider">La Amenaza Silenciosa</span>
+                            <h3 class="text-2xl font-bold text-white mt-1 mb-4">El Virus Aerotransportado vs. Mordeduras</h3>
+                            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+                                Uno de los aspectos más aterradores del lore de Project Zomboid es la naturaleza del contagio. Aunque las mordeduras de los infectados causan una fiebre mortal y una reanimación segura, el verdadero catalizador del fin del mundo fue una cepa mutada que se propagó por el aire.
+                            </p>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Millones de personas alrededor del planeta que nunca fueron mordidas cayeron repentinamente enfermas y murieron, convirtiéndose en cadáveres reanimados y colapsando las estructuras gubernamentales antes de que nadie pudiera entender el fenómeno.
+                            </p>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Brote Knox" class="rounded-xl border border-zinc-700 w-full h-64 object-cover opacity-90 shadow-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#141b16] border border-zinc-800 p-8 sm:p-10 rounded-2xl">
+                    <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                        <div class="w-full md:w-1/2">
+                            <span class="text-amber-500 font-mono text-xs uppercase font-bold tracking-wider">Ley Marcial y Aislamiento</span>
+                            <h3 class="text-2xl font-bold text-white mt-1 mb-4">La Cuarentena del Ejército</h3>
+                            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+                                Ante los primeros indicios del brote en el condado de Knox (Kentucky), el ejército estadounidense actuó con extrema rapidez y brutalidad. Se erigieron enormes barricadas, se cortaron carreteras principales y se desplegaron tropas en ciudades como West Point, Muldraugh y Valley Station.
+                            </p>
+                            <p class="text-zinc-400 text-sm leading-relaxed">
+                                Los civiles atrapados dentro de la zona de exclusión fueron abandonados a su suerte bajo la justificación de contener una pandemia global, convirtiendo la región en una ratonera mortal.
+                            </p>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Cuarentena" class="rounded-xl border border-zinc-700 w-full h-64 object-cover opacity-90 shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== VIEW: MISTERIOS (misterios.html equivalent) ==================== -->
+        <div id="view-misterios" class="page-view py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-red-600 font-mono text-sm tracking-widest uppercase">Expediente 02: Secretos del Condado</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 font-horror">Misterios y Leyendas Urbanas</h2>
                 <div class="w-24 h-1 bg-emerald-700 mx-auto mt-4 rounded-full"></div>
-                <p class="text-zinc-400 mt-4">Lo que las autoridades intentaron ocultar antes de la caída total de las comunicaciones.</p>
+                <p class="text-zinc-400 mt-4">Los secretos más oscuros que esconde el mapa y que pocos jugadores han logrado desentrañar.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Secret 1 -->
                 <div class="bg-[#141b16] border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="bg-red-900/30 text-red-400 border border-red-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 01</span>
-                            <h3 class="text-xl font-bold text-white">La Base Secreta (Spiffo Labs)</h3>
+                            <h3 class="text-xl font-bold text-white">La Base Secreta / Spiffo Labs</h3>
                         </div>
                         <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                            Oculta en los bosques profundos del mapa se encuentra una instalación de investigación subterránea vinculada a la cadena de comida rápida Spiffo. Rumores y pistas en el código sugieren experimentos clandestinos y la verdadera fuente corporativa del brote patógeno.
+                            Escondida en los densos bosques del norte, existen instalaciones subterráneas vinculadas a experimentos clandestinos corporativos. Muchos teóricos de la comunidad afirman que el virus pudo originarse o analizarse primeramente en estos laboratorios secretos antes de propagarse.
                         </p>
                     </div>
                     <div class="flex items-center text-emerald-500 text-sm font-semibold space-x-2">
                         <i class="fa-solid fa-location-dot"></i>
-                        <span>Ubicación: Bosques al oeste de Louisville / Suroeste de Valley Station</span>
+                        <span>Ubicación: Bosques profundos del norte</span>
                     </div>
                 </div>
 
-                <!-- Secret 2 -->
                 <div class="bg-[#141b16] border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="bg-amber-900/30 text-amber-400 border border-amber-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 02</span>
-                            <h3 class="text-xl font-bold text-white">Transmisiones de Radio (AEBS)</h3>
+                            <h3 class="text-xl font-bold text-white">Transmisiones AEBS (95.0 MHz)</h3>
                         </div>
                         <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                            El Sistema de Emisión de Emergencia automatizado transmite códigos cifrados y datos meteorológicos antes de apagarse por completo. Escuchar estas frecuencias revela patrones de actividad militar y el avance inexorable de la infección.
+                            El Sistema de Emisión de Emergencia automatizado transmite códigos cifrados y reportes meteorológicos extraños antes de que la energía colapse por completo en todo el estado, ofreciendo pistas sobre el avance de la infección militar.
                         </p>
                     </div>
                     <div class="flex items-center text-amber-500 text-sm font-semibold space-x-2">
                         <i class="fa-solid fa-tower-broadcast"></i>
-                        <span>Frecuencia Clave: 95.0 MHz (Varía según configuración del mundo)</span>
+                        <span>Frecuencia clave de radio analógica</span>
                     </div>
                 </div>
 
-                <!-- Secret 3 -->
                 <div class="bg-[#141b16] border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="bg-blue-900/30 text-blue-400 border border-blue-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 03</span>
-                            <h3 class="text-xl font-bold text-white">Búnkeres Ocultos y Zonas Inaccesibles</h3>
+                            <h3 class="text-xl font-bold text-white">Búnkeres Antinucleares Escondidos</h3>
                         </div>
                         <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                            Existen refugios antinucleares y complejos fortificados repartidos aleatoriamente o escondidos tras puertas blindadas que requieren generadores y sopletes para abrirse, albergando suministros militares de alto valor.
+                            Refugios subterráneos fortificados que solo pueden abrirse utilizando un soplete de propano y herramientas de metalurgia avanzada, conteniendo provisiones de supervivencia militar de emergencia.
                         </p>
                     </div>
                     <div class="flex items-center text-blue-400 text-sm font-semibold space-x-2">
                         <i class="fa-solid fa-hammer"></i>
-                        <span>Requisito: Soplete, máscara de soldar y nivel alto de carpintería/metalurgia</span>
+                        <span>Requiere herramientas de soldadura</span>
                     </div>
                 </div>
 
-                <!-- Secret 4 -->
                 <div class="bg-[#141b16] border border-zinc-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="bg-purple-900/30 text-purple-400 border border-purple-800/50 px-3 py-1 rounded-md text-xs font-mono">SECRETO 04</span>
-                            <h3 class="text-xl font-bold text-white">El Misterio de Kate y Baldspot</h3>
+                            <h3 class="text-xl font-bold text-white">El Mito de Kate y Baldspot</h3>
                         </div>
                         <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                            En las primeras versiones del juego (los prototipos de 2011), el tutorial presentaba a Kate herida en la cama y a su esposo Baldspot lidiando con la tragedia inicial. Esta trágica historia sentó las bases emocionales del universo del juego.
+                            En las versiones Alfa históricas de 2011, la demo presentaba la trágica historia de Kate herida en cama. Aunque la estructura cambió, su legado sigue vivo en los archivos de la comunidad.
                         </p>
                     </div>
                     <div class="flex items-center text-purple-400 text-sm font-semibold space-x-2">
                         <i class="fa-solid fa-history"></i>
-                        <span>Referencia histórica del desarrollo independiente</span>
+                        <span>Los orígenes del desarrollo indie</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="curiosidades" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-emerald-500 font-mono text-sm tracking-widest uppercase">Datos del Simulador</span>
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 font-horror">Curiosidades y Mecánicas Únicas</h2>
-            <div class="w-24 h-1 bg-red-800 mx-auto mt-4 rounded-full"></div>
-            <p class="text-zinc-400 mt-4">Detalles técnicos y referencias culturales que hacen de Project Zomboid una obra maestra de la supervivencia.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-[#141b16]/70 border border-zinc-800 p-6 rounded-xl">
-                <div class="text-emerald-500 text-3xl mb-4"><i class="fa-solid fa-lungs"></i></div>
-                <h4 class="text-lg font-bold text-white mb-2">Simulación de Metabolismo</h4>
-                <p class="text-zinc-400 text-sm">El peso corporal importa: comer comida chatarra engorda y reduce tu resistencia física, mientras que la desnutrición reduce drásticamente tu fuerza muscular.</p>
-            </div>
-
-            <div class="bg-[#141b16]/70 border border-zinc-800 p-6 rounded-xl">
-                <div class="text-amber-500 text-3xl mb-4"><i class="fa-solid fa-brain"></i></div>
-                <h4 class="text-lg font-bold text-white mb-2">Psicología y Pánico</h4>
-                <p class="text-zinc-400 text-sm">Los personajes sufren de claustrofobia, agorafobia, depresión y pánico extremo al enfrentarse a multitudes de zombis sin entrenamiento previo.</p>
-            </div>
-
-            <div class="bg-[#141b16]/70 border border-zinc-800 p-6 rounded-xl">
-                <div class="text-red-500 text-3xl mb-4"><i class="fa-solid fa-tv"></i></div>
-                <h4 class="text-lg font-bold text-white mb-2">La Cultura Pop de los 90</h4>
-                <p class="text-zinc-400 text-sm">El juego recrea fielmente la tecnología analógica de 1993: cintas VHS educativos para aprender habilidades, casetes de música y televisores de tubo.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="galeria" class="py-24 bg-[#0d1210] border-t border-zinc-800/60 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
+        <!-- ==================== VIEW: CURIOSIDADES (curiosidades.html equivalent) ==================== -->
+        <div id="view-curiosidades" class="page-view py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-red-600 font-mono text-sm tracking-widest uppercase">Banco de Imágenes</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 font-horror">Galería del Condado de Knox</h2>
-                <div class="w-24 h-1 bg-emerald-700 mx-auto mt-4 rounded-full"></div>
-                <p class="text-zinc-400 mt-4">Vistas panorámicas y momentos capturados en la zona de cuarentena.</p>
+                <span class="text-emerald-500 font-mono text-sm tracking-widest uppercase">Expediente 03: Datos y Mecánicas</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 font-horror">Curiosidades del Simulador</h2>
+                <div class="w-24 h-1 bg-red-800 mx-auto mt-4 rounded-full"></div>
+                <p class="text-zinc-400 mt-4">Detalles técnicos avanzados y referencias culturales ocultas en Project Zomboid.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="group relative overflow-hidden rounded-xl border border-zinc-800 bg-[#141b16]">
-                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Atmósfera Postapocalíptica" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 opacity-85">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#141b16] border border-zinc-800 p-8 rounded-2xl">
+                    <div class="text-emerald-500 text-3xl mb-4"><i class="fa-solid fa-lungs"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Metabolismo y Peso</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        El cuerpo de tu personaje reacciona al consumo de calorías. Comer demasiada comida rápida provoca obesidad y fatiga rápida, mientras que la falta de nutrientes reduce drásticamente la fuerza en combate.
+                    </p>
+                </div>
+
+                <div class="bg-[#141b16] border border-zinc-800 p-8 rounded-2xl">
+                    <div class="text-amber-500 text-3xl mb-4"><i class="fa-solid fa-brain"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Salud Mental y Pánico</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Los supervivientes desarrollan fobias (claustrofobia, agorafobia) y sufren episodios de pánico extremo o depresión profunda si se quedan solos o atrapados en la oscuridad durante demasiado tiempo.
+                    </p>
+                </div>
+
+                <div class="bg-[#141b16] border border-zinc-800 p-8 rounded-2xl">
+                    <div class="text-red-500 text-3xl mb-4"><i class="fa-solid fa-tv"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tecnología de 1993</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        El juego recrea con precisión la era pre-internet: cintas VHS educativas para aprender carpintería y agricultura sin libros, televisores de tubo y reproductores de casetes analógicos.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== VIEW: GALERIA (galeria.html equivalent) ==================== -->
+        <div id="view-galeria" class="page-view py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-red-600 font-mono text-sm tracking-widest uppercase">Expediente 04: Banco de Imágenes</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-2 font-horror">Galería del Condado de Knox</h2>
+                <div class="w-24 h-1 bg-emerald-700 mx-auto mt-4 rounded-full"></div>
+                <p class="text-zinc-400 mt-4">Vistas panorámicas y registros visuales del apocalipsis en Kentucky.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-[#141b16]">
+                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Muldraugh" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500 opacity-85">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6">
                         <div>
-                            <span class="text-xs text-red-500 font-mono">ÁREA URBANA</span>
-                            <h4 class="text-white font-bold text-lg">Calles Desoladas de Muldraugh</h4>
+                            <span class="text-xs text-red-500 font-mono">ZONA URBANA</span>
+                            <h4 class="text-white font-bold text-lg">Calles Desiertas de Muldraugh</h4>
                         </div>
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-xl border border-zinc-800 bg-[#141b16]">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Bosques y Refugio" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 opacity-85">
+                <div class="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-[#141b16]">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Bosques" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500 opacity-85">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6">
                         <div>
-                            <span class="text-xs text-emerald-500 font-mono">SUPERVIVENCIA EN EL BOSQUE</span>
-                            <h4 class="text-white font-bold text-lg">Refugios Alejados de la Civilización</h4>
+                            <span class="text-xs text-emerald-500 font-mono">SUPERVIVENCIA</span>
+                            <h4 class="text-white font-bold text-lg">Refugio Profundo en el Bosque</h4>
                         </div>
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-xl border border-zinc-800 bg-[#141b16]">
-                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Tecnología Analógica" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 opacity-85">
+                <div class="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-[#141b16]">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Tecnología" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500 opacity-85">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6">
                         <div>
-                            <span class="text-xs text-amber-500 font-mono">SISTEMAS DE EMERGENCIA</span>
-                            <h4 class="text-white font-bold text-lg">Monitoreo de Frecuencias de Radio</h4>
+                            <span class="text-xs text-amber-500 font-mono">MONITOREO</span>
+                            <h4 class="text-white font-bold text-lg">Estación de Transmisión de Emergencia</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <footer class="bg-[#080b09] border-t border-zinc-800 py-12 px-4 sm:px-6 lg:px-8 text-zinc-500 text-sm">
+    </main>
+
+    <footer class="bg-[#080b09] border-t border-zinc-800 py-12 px-4 sm:px-6 lg:px-8 text-zinc-500 text-sm mt-20">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center space-x-3">
                 <i class="fa-solid fa-biohazard text-red-600 text-xl"></i>
                 <span class="font-horror text-zinc-300">PROJECT ZOMBOID ESPAÑOL</span>
             </div>
             <p class="text-center md:text-left text-xs sm:text-sm">
-                Project Zomboid es desarrollado por The Indie Stone. Este sitio es un archivo de lore y divulgación para fans de la comunidad hispanohablante.
+                Project Zomboid es desarrollado por The Indie Stone. Este sitio multipágina es un archivo de lore y divulgación para la comunidad hispanohablante.
             </p>
             <div class="flex space-x-4 text-lg">
                 <a href="https://projectzomboid.com" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors" title="Sitio Oficial">
@@ -320,6 +406,52 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function switchPage(pageId) {
+            // Hide all views
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // Show target view
+            const targetView = document.getElementById('view-' + pageId);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+
+            // Update navbar button styles
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-emerald-500', 'font-semibold');
+                btn.classList.add('text-zinc-300');
+            });
+
+            const activeNavBtn = document.getElementById('nav-' + pageId);
+            if (activeNavBtn) {
+                activeNavBtn.classList.remove('text-zinc-300');
+                activeNavBtn.classList.add('text-emerald-500', 'font-semibold');
+            }
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+    </script>
 
 </body>
 </html>
