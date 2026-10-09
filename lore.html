@@ -3,160 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Zomboid - Lore & Transmisiones</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0b0f0c;
-            color: #d1d5db;
-        }
-        .font-zomboid {
-            font-family: 'Special Elite', cursive;
-        }
-        .font-terminal {
-            font-family: 'VT323', monospace;
-        }
-        .blood-glow {
-            text-shadow: 0 0 10px rgba(185, 28, 28, 0.6);
-        }
-        .radio-card {
-            background: rgba(17, 24, 39, 0.7);
-            border: 1px solid rgba(185, 28, 28, 0.3);
-            transition: all 0.3s ease;
-        }
-        .radio-card:hover {
-            border-color: rgba(185, 28, 28, 0.8);
-            box-shadow: 0 0 15px rgba(185, 28, 28, 0.2);
-        }
-    </style>
+    <title>Project Zomboid - Lore e Historia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-950 text-gray-200 min-h-screen flex flex-col">
+<body>
 
-    <!-- Barra de Navegación -->
-    <nav class="bg-gray-900/90 border-b border-red-900/50 sticky top-0 z-50 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center space-x-3">
-                    <span class="font-zomboid text-red-600 text-xl tracking-wider">PROJECT: ZOMBOID</span>
-                </div>
-                <div class="hidden md:flex space-x-6 font-semibold text-sm">
-         
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="main-header">
+        <div class="logo">PROJECT ZOMBOID: ARCHIVOS KNOT</div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
                 <a href="https://reyroger12.github.io/index.html" class="text-emerald-500 font-semibold">Inicio</a>
                 <a href="https://reyroger12.github.io/lore.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Lore</a>
                 <a href="https://reyroger12.github.io/misterios.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Misterios</a>
                 <a href="https://reyroger12.github.io/curiosidades.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Curiosidades</a>
                 <a href="https://reyroger12.github.io/galeria.html" class="text-zinc-300 hover:text-emerald-500 transition-colors">Galería</a>
-            
+            </nav>
+    </header>
+
+    <!-- SECCIÓN LORE -->
+    <main class="content-container">
+        <section class="lore-section">
+            <h1>EL LORE Y CRONOLOGÍA</h1>
+            <p class="subtitle">Una inmersión profunda en el colapso de la civilización en el verano de 1993.</p>
+
+            <!-- CONTENEDOR DEL VIDEO SOLICITADO -->
+            <div class="video-container" style="margin: 30px 0; text-align: center;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border: 1px solid #333;">
+                    <!-- Insertado segun el fotograma de la investigacion del Evento Knox -->
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Cronología del Evento Knox - Project Zomboid" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+                <small style="color: #888; font-family: 'Special Elite', monospace; display: block; margin-top: 8px;">[REGISTRO AUDIOVISUAL DE ARCHIVO: CRONOLOGÍA DE LA INFECCIÓN (9 - 18 DE JULIO, 1993)]</small>
             </div>
-        </div>
-    </nav>
 
-    <!-- Contenido Principal -->
-    <main class="flex-grow max-w-5xl mx-auto px-4 py-10 w-space">
-        
-        <!-- Cabecera de Lore -->
-        <header class="text-center mb-12">
-            <h1 class="font-zomboid text-4xl md:text-6xl text-red-600 mb-4 blood-glow">EL EVENTO KNOX</h1>
-            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-                Una inmersión profunda en el colapso de la civilización en el verano de 1993.
-            </p>
-        </header>
-
-        <!-- Descripción e Historia Profunda -->
-        <section class="bg-gray-900/60 border border-red-900/30 p-6 md:p-8 rounded-lg mb-12 shadow-xl">
-            <h2 class="font-zomboid text-2xl text-red-500 mb-4">Cronología del Apocalipsis</h2>
-            <p class="text-gray-300 leading-relaxed mb-4">
-                Todo comenzó en julio de 1993 en el condado de Knox, Kentucky. Lo que el Gobierno de los Estados Unidos y los medios intentaron disfrazar inicialmente como una simple "gripe estacional" o brotes aislados de pánico y confusión, resultó ser una pesadilla biológica imparable. El aislamiento militar rápido de ciudades como Muldraugh y West Point selló el destino de miles de ciudadanos inocentes.
-            </p>
-            <p class="text-gray-300 leading-relaxed">
-                A medida que las transmisiones de radio locales colapsaban y las redes de emergencia emitían directrices contradictorias, quedó claro que la infección no distinguía entre clases sociales, ejército o civiles: la civilización humana tal como se conocía había llegado a su fin.
-            </p>
-        </section>
-
-        <!-- Sección de Video -->
-        <section class="mb-16">
-            <h3 class="font-zomboid text-xl text-red-500 mb-4 text-center">DOCUMENTO AUDIOVISUAL: CRONOLOGÍA DE LA INFECCIÓN</h3>
-            <div class="relative w-full aspect-video bg-black rounded-lg overflow-hidden border border-red-900/50 shadow-2xl">
-                <!-- Video incrustado de ejemplo basado en la cronología visual proporcionada -->
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL..." title="Project Zomboid Knox Event Lore" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <p class="text-center text-xs text-gray-500 mt-2 font-terminal">Transcripción visual recopilada de archivos de emergencia (9 - 18 de Julio, 1993).</p>
-        </section>
-
-        <!-- Transmisiones de Radio Dinámicas -->
-        <section>
-            <h2 class="font-zomboid text-3xl text-red-600 mb-6 text-center blood-glow">ARCHIVOS DE RADIO Y TRANSMISIONES</h2>
-            <p class="text-gray-400 text-center mb-8">Registros oficiales recuperados de las frecuencias de emergencia, KnoxTalk, Hitz Radio, NNR y LBMW durante el colapso.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- TRANSCRIPCIONES DE TRANSMISIONES DE RADIO DE FORMA DINÁMICA -->
+            <section class="radio-transcripts" style="margin-top: 50px;">
+                <h2 style="font-family: 'Special Elite', monospace; color: #b33939; border-bottom: 2px solid #b33939; padding-bottom: 10px; margin-bottom: 30px;">ARCHIVOS DE RADIO INTERCEPTADOS (JULIO DE 1993)</h2>
                 
-                <!-- Frecuencia M1A1 -->
-                <div class="radio-card p-6 rounded-lg">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="font-terminal text-red-500 text-xl font-bold">FRECUENCIA M1A1</span>
-                        <span class="text-xs bg-red-950 text-red-400 px-2 py-1 rounded border border-red-900">Estación de Números</span>
+                <div class="transcript-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    
+                    <!-- Frecuencia M1A1 -->
+                    <div class="transcript-card" style="background: rgba(20, 20, 20, 0.9); border: 1px solid #444; padding: 20px; border-left: 4px solid #b33939;">
+                        <span style="font-size: 0.8rem; color: #aaa; font-family: 'Special Elite', monospace;">FRECUENCIA DE ONDA CORTA</span>
+                        <h3 style="color: #fff; margin: 10px 0; font-family: 'Special Elite', monospace;">Frecuencia M1A1</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; line-height: 1.5;">Reproducción cíclica de estación de números: <em>Tres. Siete. Ocho. Nine. Dos. Ocho. Cero. Nueve...</em> Coordenadas calculadas conducen a Fort Knox, KY, vinculando el misterio con los experimentos clandestinos[cite: 2].</p>
                     </div>
-                    <p class="text-gray-300 text-sm font-mono mb-3 bg-black/40 p-3 rounded border border-gray-800">
-                        "Tres. Siete. Ocho. Nueve. Dos. Ocho. Cero. Nueve. Ocho. Cinco. Nueve. Siete. Cuatro. Siete. Cero. Nueve."
-                    </p>
-                    <p class="text-gray-400 text-xs">
-                        <strong>Análisis:</strong> Las coordenadas se traducen a Fort Knox, KY[cite: 2]. Emisión de onda corta inspirada en estaciones de números reales[cite: 2].
-                    </p>
-                </div>
 
-                <!-- Frecuencia sin dato -->
-                <div class="radio-card p-6 rounded-lg">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="font-terminal text-yellow-500 text-xl font-bold">FRECUENCIA DESCONOCIDA</span>
-                        <span class="text-xs bg-yellow-950 text-yellow-400 px-2 py-1 rounded border border-yellow-900">12 Julio 1993</span>
+                    <!-- Frecuencia sin dato (Zona de Exclusión) -->
+                    <div class="transcript-card" style="background: rgba(20, 20, 20, 0.9); border: 1px solid #444; padding: 20px; border-left: 4px solid #b33939;">
+                        <span style="font-size: 0.8rem; color: #aaa; font-family: 'Special Elite', monospace;">12 DE JULIO DE 1993 (06:00 - 12:00)</span>
+                        <h3 style="color: #fff; margin: 10px 0; font-family: 'Special Elite', monospace;">Superviviente Anónimo</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; line-height: 1.5;">¿Hola? ¿HOLA? ¡Estoy en la zona de exclusión! Te están mintiendo, el Ejército sabe exactamente lo que es... Las personas ya no son personas, la fiebre mata rápido y si te meten el diente, eres uno de ellos[cite: 3].</p>
                     </div>
-                    <p class="text-gray-300 text-sm font-mono mb-3 bg-black/40 p-3 rounded border border-gray-800">
-                        "¿Hola? ¿HOLA? Estoy en la zona de exclusión. Te están mintiendo. El Ejército sabe exactamente lo que es esto... ¡Las personas ya no son personas!"
-                    </p>
-                    <p class="text-gray-400 text-xs">
-                        <strong>Efecto psicológico:</strong> Transmisión clasificada que genera pánico extremo (+30 Pánico, +30 Miedo) en los supervivientes que la sintonizan[cite: 3].
-                    </p>
-                </div>
 
-                <!-- KnoxTalk Radio -->
-                <div class="radio-card p-6 rounded-lg">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="font-terminal text-red-500 text-xl font-bold">KNOXTALK RADIO</span>
-                        <span class="text-xs bg-red-950 text-red-400 px-2 py-1 rounded border border-red-900">Debates y Colapso</span>
+                    <!-- Knox Hitz Radio -->
+                    <div class="transcript-card" style="background: rgba(20, 20, 20, 0.9); border: 1px solid #444; padding: 20px; border-left: 4px solid #b33939;">
+                        <span style="font-size: 0.8rem; color: #aaa; font-family: 'Special Elite', monospace;">KNOX HITZ RADIO (9 - 16 DE JULIO)</span>
+                        <h3 style="color: #fff; margin: 10px 0; font-family: 'Special Elite', monospace;">Transmisiones de Janina & Billy</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; line-height: 1.5;">Intentando mantener la normalidad con música pop y country mientras los tanques bloquean las carreteras. Mensajes personales desgarradores antes del silencio total de las ondas[cite: 4, 7, 9].</p>
                     </div>
-                    <p class="text-gray-300 text-sm font-mono mb-3 bg-black/40 p-3 rounded border border-gray-800">
-                        "Mi nombre es Pastor James Hartnell... Me han mordido. No me queda mucho tiempo en este mundo. Vine aquí para orar con ustedes..."
-                    </p>
-                    <p class="text-gray-400 text-xs">
-                        <strong>Nota histórica:</strong> Las llamadas ciudadanas exponen la negligencia gubernamental y el colapso absoluto del orden público antes del silencio total[cite: 31, 92].
-                    </p>
-                </div>
 
-                <!-- NNR Network -->
-                <div class="radio-card p-6 rounded-lg">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="font-terminal text-red-500 text-xl font-bold">RED NNR (NOTICIAS)</span>
-                        <span class="text-xs bg-red-950 text-red-400 px-2 py-1 rounded border border-red-900">Cobertura Global</span>
+                    <!-- KnoxTalk Radio -->
+                    <div class="transcript-card" style="background: rgba(20, 20, 20, 0.9); border: 1px solid #444; padding: 20px; border-left: 4px solid #b33939;">
+                        <span style="font-size: 0.8rem; color: #aaa; font-family: 'Special Elite', monospace;">KNOXTALK RADIO (LLAMADAS ABIERTAS)</span>
+                        <h3 style="color: #fff; margin: 10px 0; font-family: 'Special Elite', monospace;">Testimonios Ciudadanos y Conspiraciones</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; line-height: 1.5;">Ciudadanos denuncian laboratorios secretos, científicos con batas blancas y ganado infectado por la carne de Spiffo's. El pánico escala hasta que los operadores colapsan en directo[cite: 31, 38, 46].</p>
                     </div>
-                    <p class="text-gray-300 text-sm font-mono mb-3 bg-black/40 p-3 rounded border border-gray-800">
-                        "Se ha confirmado la infección del Evento Knox en Londres, Seúl, Tokio y Mogadiscio. El descenso parece no tener fin."
-                    </p>
-                    <p class="text-gray-400 text-xs">
-                        <strong>Trascendencia:</strong> La cadena de noticias que resistió más tiempo, informando la expansión internacional de la pandemia el 18 de julio[cite: 92].
-                    </p>
-                </div>
 
-            </div>
+                    <!-- NNR Radio -->
+                    <div class="transcript-card" style="background: rgba(20, 20, 20, 0.9); border: 1px solid #444; padding: 20px; border-left: 4px solid #b33939;">
+                        <span style="font-size: 0.8rem; color: #aaa; font-family: 'Special Elite', monospace;">RED NACIONAL DE NOTICIAS (NNR)</span>
+                        <h3 style="color: #fff; margin: 10px 0; font-family: 'Special Elite', monospace;">Comunicados Oficiales del Gobierno</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; line-height: 1.5;">El Presidente y el General John McGrew insisten en que "el Evento Knox está contenido" mientras el brote se extiende internacionalmente a Londres, Seúl y Tokio[cite: 62, 72, 88].</p>
+                    </div>
+
+                    <!-- Noticiero LBMW -->
+                    <div class="transcript-card" style="background: rgba(20, 20, 20, 0.9); border: 1px solid #444; padding: 20px; border-left: 4px solid #b33939;">
+                        <span style="font-size: 0.8rem; color: #aaa; font-family: 'Special Elite', monospace;">NOTICIERO LBMW & JONAS UNDERWOOD</span>
+                        <h3 style="color: #fff; margin: 10px 0; font-family: 'Special Elite', monospace;">Jackie Jaye y el Fin de la Transmisión</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; line-height: 1.5;">Reportes finales desde el perímetro. La cepa aérea se confirma el 15 de julio. Jonas Underwood intenta alertar a los supervivientes antes de ser invadidos por la horda final[cite: 93, 115, 118].</p>
+                    </div>
+
+                </div>
+            </section>
         </section>
-
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-red-900/30 py-6 text-center text-xs text-gray-500">
-        <p>Project Zomboid Lore Database &copy; 1993 The Knox Event Archives.</p>
+    <!-- PIE DE PÁGINA -->
+    <footer class="main-footer">
+        <p>&copy; 1993 Project Zomboid Archive. Todos los derechos reservados al fin de la civilización.</p>
     </footer>
 
 </body>
